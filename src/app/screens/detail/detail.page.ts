@@ -5,6 +5,7 @@ import { CartItem } from 'src/app/models/cart-item.model';
 import { Food } from 'src/app/models/food.model';
 import { CartService } from 'src/app/services/cart.service';
 import { FoodService } from 'src/app/services/food.service';
+import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
   selector: 'app-detail',
@@ -19,6 +20,7 @@ export class DetailPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private foodService: FoodService,
     private cartService: CartService,
+    private wishlistService: WishlistService,
     private toastCtrl: ToastController
   ) {
     this.id = +this.activatedRoute.snapshot.paramMap.get('id');
@@ -38,12 +40,17 @@ export class DetailPage implements OnInit {
     };
 
     this.cartService.addToCart(cartitem);
-    this.presentToast();
+    this.presentToast('Food added to the cart');
   }
 
-  async presentToast() {
+  addToWishlist() {
+    this.wishlistService.addToWishlist(this.food);
+    this.presentToast('Food added to wishlist');
+  }
+
+  async presentToast(message: string) {
     const toast = await this.toastCtrl.create({
-      message: 'Food added to the cart',
+      message,
       mode: 'ios',
       duration: 1000,
       position: 'top',

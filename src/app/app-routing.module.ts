@@ -26,6 +26,15 @@ const routes: Routes = [
     loadChildren: () => import('./screens/detail/detail.module').then(m => m.DetailPageModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'wishlist',
+    loadChildren: () => import('./wishlist/wishlist.module').then(m => m.WishlistPageModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'location',
+    loadChildren: () => import('./location/location.module').then( m => m.LocationPageModule)
+  },
 ];
 
 @NgModule({

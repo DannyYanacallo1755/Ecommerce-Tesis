@@ -15,6 +15,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'wishlist',
+        loadChildren: () =>
+          import('../wishlist/wishlist.module').then(
+            (m) => m.WishlistPageModule
+          ),
+      },
+      {
         path: 'cart',
         loadChildren: () =>
           import('../screens/cart/cart.module').then((m) => m.CartPageModule),

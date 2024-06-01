@@ -7,3 +7,9 @@ ion-tab-bar {
     }
   }
 }
+
+:host {
+  ion-content.home-content {
+    --background: #e3977798 !important; /* Asegúrate de que el estilo sea prioritario */
+  }
+}
